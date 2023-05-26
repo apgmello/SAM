@@ -1,0 +1,48 @@
+/* Lógico_1: */
+
+CREATE TABLE ServiceOrder (
+    IdUser INTEGER,
+    IdMachine INTEGER,
+    Id INTEGER PRIMARY KEY,
+    Status VARCHAR,
+    TypeOrder VARCHAR,
+    StartDate DATE,
+    EndDate DATE,
+    Description VARCHAR
+);
+
+CREATE TABLE User (
+    Id INTEGER PRIMARY KEY,
+    Name VARCHAR,
+    Email VARCHAR,
+    Password VARCHAR,
+    CPF VARCHAR,
+    Birth DATE,
+    Phone VARCHAR,
+    Office VARCHAR,
+    AccessLevel VARCHAR,
+    Speciality VARCHAR,
+    Salary FLOAT,
+    Class VARCHAR,
+    Admin VARCHAR
+);
+
+CREATE TABLE Machine (
+    Id INTEGER PRIMARY KEY,
+    Name VARCHAR,
+    Weight DOUBLE,
+    Type VARCHAR,
+    Observation VARCHAR,
+    Status VARCHAR,
+    Voltage INTEGER,
+    Capacity INTEGER,
+    Category VARCHAR
+);
+ 
+ALTER TABLE ServiceOrder ADD CONSTRAINT FK_ServiceOrder_2
+    FOREIGN KEY (IdMachine)
+    REFERENCES Machine (Id);
+ 
+ALTER TABLE ServiceOrder ADD CONSTRAINT FK_ServiceOrder_3
+    FOREIGN KEY (IdUser)
+    REFERENCES User (Id);
